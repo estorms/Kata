@@ -29,6 +29,7 @@ namespace Challenges
             //Description: order string of nums by descending
             
             Console.WriteLine(challengesLib.DescendingOrder(6874));
+            Console.WriteLine(challengesLib.AscendingOrder(6874));
 
 
         }
