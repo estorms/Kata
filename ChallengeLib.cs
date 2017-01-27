@@ -1,6 +1,8 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Challenges
 {
@@ -95,8 +97,16 @@ namespace Challenges
 
         }
 
+        public int DescendingAlt(int num)
+        {
+            var stringInt = num.ToString().ToList().OrderByDescending(s => s);
+            var str = String.Join("", stringInt);
+            return Convert.ToInt32(str);
+        }
+
         public int AscendingOrder(int num)
         {
+            var NumString = num.ToString().OrderByDescending(i => i);
             var NumList = num.ToString().ToList().OrderBy(i => i);
             var str = String.Join("", NumList);
             return Convert.ToInt32(str);
@@ -120,7 +130,104 @@ namespace Challenges
             }
             return -1;
         }
+
+        //         The new "Avengers" movie has just been released! There are a lot of people at the cinema box office standing in a huge line. Each of them has a single 100, 50 or 25 dollars bill. A "Avengers" ticket costs 25 dollars. // Vasya is currently working as a clerk. He wants to sell a ticket to every single person in this line. Can Vasya sell a ticket to each person and give the change if he initially has no money and sells the tickets strictly in the order people follow in the line? Return YES, if Vasya can sell a ticket to each person and give the change. Otherwise return NO.
+
+        public string Tickets(int[] peopleInLine)
+        {
+            int accumulator = 0;
+
+            string no = "NO";
+            string yes = "YES";
+            bool divisible;
+            for (var i = 0; i <= peopleInLine.Length; i++)
+            {
+                int currentSale = peopleInLine[i];
+                int nextSale = peopleInLine[i + 1];
+                if (nextSale % 25 != 0)
+                {
+                    divisible = false;
+                }
+                else
+                {
+                    divisible = true;
+                }
+                if (divisible == true)
+                {
+                    return yes;
+                }
+
+                else { return no; }
+            }
+            //    return peopleInLine.Aggregate((num, next) => num * next);
+
+            return no;
+        }
+
+        public int Fib(int n)
+        {
+            int a = 0;
+            int b = 1;
+            int c;
+
+            for (var i = 0; i <= n; i++)
+            {
+                c = a;
+                a = b;
+                b = a + c;
+            }
+            return a;
+        }
+
+        static readonly Regex Validator = new Regex(@"^[ATCG]+$");
+
+        public static bool IsValid(string str)
+        {
+            return Validator.IsMatch(str);
+        }
+        public string MakeComplement(string dna)
+        {
+
+            char [,] NucleicAcids = new char[2, 2] {{'A', 'T'}, {'C', 'T'}};
+            Console.WriteLine("{0} is [0, 0], {1} is [0, 1], {2} is [1, 0], {3} is [1, 1],",  NucleicAcids[0, 0], NucleicAcids[0, 1], NucleicAcids[1, 0], NucleicAcids[1, 1]);
+            if (IsValid(dna))
+            { 
+
+                StringBuilder sb = new StringBuilder();
+                StringBuilder sb2 = new StringBuilder();
+
+                string reversedDNA = dna.ToUpper().Replace((NucleicAcids[0, 0]), (NucleicAcids[0, 1])).ToString();
+
+            //     for (var i = 0; i < dna.Length; i++)
+            //     {
+            //         if (dna[i].Equals('A'))
+            //         {
+            //             sb.Append('T');
+            //         }
+            //         else if (dna[i].Equals('T'))
+            //         {
+            //             sb.Append('A');
+            //         }
+            //         else if (dna[i].Equals('C'))
+            //         {
+            //             sb.Append('G');
+
+            //         }
+            //         else if (dna[i].Equals('G'))
+            //         {
+            //             sb.Append('C');
+            //         }
+            //     }
+            //     return sb.ToString();
+            return reversedDNA;
+            }
+
+            else
+            {
+                string rejection = "Sorry, but Mendel says 'no.'";
+                return rejection;
+            }
+        }
     }
 }
-
 
