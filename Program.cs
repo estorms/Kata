@@ -58,11 +58,18 @@ namespace Challenges
             }
 
             //Description: Fibonacci Sequence
-            
-            for (var i = 0; i <= 20; i++) {
+
+            for (var i = 0; i <= 20; i++)
+            {
                 Console.WriteLine(challengesLib.Fib(i));
             }
-     Console.WriteLine(challengesLib.MakeComplement("ATCCG"));
+            Console.WriteLine(challengesLib.MakeComplement("ATCCG"));
+            string[] dictionary1 = new string[] { "sport", "parrot", "ports", "matey" };
+            var results = challengesLib.GetPossibleWords("ortsp", dictionary1);
+            foreach (var r in results)
+            {
+                Console.WriteLine("Possible interpretations include {0}", r);
+           }
         }
     }
 }
