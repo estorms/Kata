@@ -1,5 +1,6 @@
 ﻿using System;
-
+using ChallengesLib;
+using System.Collections.Generic;
 namespace Challenges
 {
     public class Program
@@ -31,8 +32,6 @@ namespace Challenges
             Console.WriteLine(challengesLib.DescendingOrder(6874));
             Console.WriteLine(challengesLib.AscendingOrder(6874));
             Console.WriteLine(challengesLib.DescendingAlt(6874));
-
-            //Description: Fizzbuzz
 
             for (var i = 0; i <= 25; i++)
             {
@@ -69,8 +68,36 @@ namespace Challenges
             foreach (var r in results)
             {
                 Console.WriteLine("Possible interpretations include {0}", r);
+            }
+
+
+            //here, calling on static method within static class exactly as would w/non-statics, minus object instantation
+
+            //This is the progenitor, type Person, name Ted;
+            var firstGen = FamilyTreeGenerator.Make();
+          
+            //These are Ted's descendants, a list of Persons, names Sally and Jim
+            var secondGen = new List<Person>();
+
+            //These are our third generation members, a list of Persons, names Bob (son of Sally), Joe, and George (sons of Jim)
+            var thirdGen = new List<Person>();
+
+            foreach (var d in firstGen.Descendants)
+            {
+                secondGen.Add(d);
+            }
+           foreach(var d in secondGen) {
+             foreach(var d2 in d.Descendants) {
+                 Console.WriteLine("{0} should be a thirdGen name", d2.Name);
+                 thirdGen.Add(d2);
+             }
            }
+            var firstGenDescendants = firstGen.GetDescendants(firstGen);
+            foreach (var f in firstGenDescendants) {
+          Console.WriteLine("{0} is firstGenDescendants", f);
+            }
         }
+
     }
 }
 

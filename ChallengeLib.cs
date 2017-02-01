@@ -13,6 +13,7 @@ namespace Challenges
         //WHEN STARTING ITERATOR AT ZERO, NEED TO USE <, NOT <= OPERATOR: EVEN LENGTH OPERATES DIFFERENTLY IN C#, ALONG WITH COUNT
          public string[] GetPossibleWords(string jumble, string[] dictionary)
         {
+            try {
             //order the jumbled string by converting it to a char array and then ordering by each letter in the array
             var orderedJumble = jumble.ToCharArray().OrderBy(c => c);
             //concat the ordered char array back to string (<IEnumerable> char won't convert via ToString())
@@ -39,6 +40,12 @@ namespace Challenges
 
             // throw new NotImplementedException();
         }
+            catch 
+        {
+            throw ;
+        }
+        }
+        
         // Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphanumeric characters, including digits, uppercase and lowercase alphabets.
         public int CheckDupes(string str)
         {
@@ -162,39 +169,7 @@ namespace Challenges
             return -1;
         }
 
-        //         The new "Avengers" movie has just been released! There are a lot of people at the cinema box office standing in a huge line. Each of them has a single 100, 50 or 25 dollars bill. A "Avengers" ticket costs 25 dollars. // Vasya is currently working as a clerk. He wants to sell a ticket to every single person in this line. Can Vasya sell a ticket to each person and give the change if he initially has no money and sells the tickets strictly in the order people follow in the line? Return YES, if Vasya can sell a ticket to each person and give the change. Otherwise return NO.
-
-        public string Tickets(int[] peopleInLine)
-        {
-            int accumulator = 0;
-
-            string no = "NO";
-            string yes = "YES";
-            bool divisible;
-            for (var i = 0; i <= peopleInLine.Length; i++)
-            {
-                int currentSale = peopleInLine[i];
-                int nextSale = peopleInLine[i + 1];
-                if (nextSale % 25 != 0)
-                {
-                    divisible = false;
-                }
-                else
-                {
-                    divisible = true;
-                }
-                if (divisible == true)
-                {
-                    return yes;
-                }
-
-                else { return no; }
-            }
-            //    return peopleInLine.Aggregate((num, next) => num * next);
-
-            return no;
-        }
-
+     
         public int Fib(int n)
         {
             int a = 0;
@@ -229,28 +204,28 @@ namespace Challenges
 
                 string reversedDNA = dna.ToUpper().Replace((NucleicAcids[0, 0]), (NucleicAcids[0, 1])).ToString();
 
-            //     for (var i = 0; i < dna.Length; i++)
-            //     {
-            //         if (dna[i].Equals('A'))
-            //         {
-            //             sb.Append('T');
-            //         }
-            //         else if (dna[i].Equals('T'))
-            //         {
-            //             sb.Append('A');
-            //         }
-            //         else if (dna[i].Equals('C'))
-            //         {
-            //             sb.Append('G');
+                for (var i = 0; i < dna.Length; i++)
+                {
+                    if (dna[i].Equals('A'))
+                    {
+                        sb.Append('T');
+                    }
+                    else if (dna[i].Equals('T'))
+                    {
+                        sb.Append('A');
+                    }
+                    else if (dna[i].Equals('C'))
+                    {
+                        sb.Append('G');
 
-            //         }
-            //         else if (dna[i].Equals('G'))
-            //         {
-            //             sb.Append('C');
-            //         }
-            //     }
-            //     return sb.ToString();
-            return reversedDNA;
+                    }
+                    else if (dna[i].Equals('G'))
+                    {
+                        sb.Append('C');
+                    }
+                }
+                return sb.ToString();
+            // return reversedDNA;
             }
 
             else
@@ -259,6 +234,7 @@ namespace Challenges
                 return rejection;
             }
         }
+        
     }
 }
 
