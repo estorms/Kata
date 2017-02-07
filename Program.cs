@@ -1,6 +1,7 @@
 ﻿using System;
 using ChallengesLib;
 using System.Collections.Generic;
+
 namespace Challenges
 {
     public class Program
@@ -51,30 +52,64 @@ namespace Challenges
             //here, calling on static method within static class exactly as would w/non-statics, minus object instantation
 
             //This is the progenitor, type Person, name Ted;
-            var firstGen = FamilyTreeGenerator.Make();
-          
-            //These are Ted's descendants, a list of Persons, names Sally and Jim
-            var secondGen = new List<Person>();
-
-            //These are our third generation members, a list of Persons, names Bob (son of Sally), Joe, and George (sons of Jim)
-            var thirdGen = new List<Person>();
-
-            foreach (var d in firstGen.Descendants)
-            {
-                secondGen.Add(d);
-            }
-           foreach(var d in secondGen) {
-             foreach(var d2 in d.Descendants) {
-                 Console.WriteLine("{0} should be a thirdGen name", d2.Name);
-                 thirdGen.Add(d2);
-             }
-           }
-            var firstGenDescendants = firstGen.GetDescendants(firstGen);
-            foreach (var f in firstGenDescendants) {
-          Console.WriteLine("{0} is firstGenDescendants", f);
-            }
+            var Ted = FamilyTreeGenerator.Make();
+            var fam = Ted.GetBirthMonth(Ted, "Susan");
+            Console.WriteLine("{0}", fam);
+            // foreach (var f in fam) {
         }
-
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Console.WriteLine("{0} is the family member's name, {1} is his or her birthday", f.Name, f.Birthday);
+//   var descendants = firstGen.GetDescendants(firstGen, "Ted");
+//   foreach(var d in descendants) {
+//       Console.WriteLine("{0} is an entry in the descendents return", d);
+//   }
+//     //These are Ted's descendants, a list of Persons, names Sally and Jim
+//     var secondGen = new List<Person>();
+
+//     //These are our third generation members, a list of Persons, names Bob (son of Sally), Joe, and George (sons of Jim)
+//     var thirdGen = new List<Person>();
+
+//     foreach (var d in firstGen.Descendants)
+//     {
+//         secondGen.Add(d);
+//     }
+//    foreach(var d in secondGen) {
+//      foreach(var d2 in d.Descendants) {
+//          Console.WriteLine("{0} should be a thirdGen name", d2.Name);
+//          thirdGen.Add(d2);
+//      }
+//    }
+//     var firstGenDescendants = firstGen.GetDescendants(firstGen, "Ted");
+//     foreach (var f in firstGenDescendants) {
+//   Console.WriteLine("{0} is descendants", f);
+//     }
+// }
+
 
