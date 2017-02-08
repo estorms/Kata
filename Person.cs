@@ -16,33 +16,7 @@ namespace ChallengesLib
 
         public string Name { get; set; }
         public List<Person> Descendants { get; set; }
-        public DateTime Birthday { get; set; }
-
-        // public string GetBirthMonth(Person person, string Name)
-        // {
-        //     //instantiate list to hold all Persons in the family originate from Ted
-        //     Person chosenOne = null;
-        //     String birthDate = "";
-        //     var family = new List<Person> { person };
-        //     foreach (var d in person.Descendants)
-        //     {
-        //         family.Add(d);
-        //         foreach (var d2 in d.Descendants)
-        //         {
-        //             family.Add(d2);
-        //         }
-        //     }
-        //     foreach (var f in family)
-        //     {
-        //         if (f.Name == Name)
-        //         {
-        //             chosenOne = f;
-        //             birthDate = f.Birthday.ToString("MMMM");
-        //         }
-
-        //     }
-        //     return birthDate;
-        // }
+        public DateTime Birthday { get; set; } 
 
         public string GetBirthMonth(Person person, string descendantName)
         {
@@ -62,16 +36,7 @@ namespace ChallengesLib
         }
     }
 
-    //    if (node == null)
-    //     return;
-
-    // output.Add(node);
-    // Console.WriteLine(node.Name);
-
-    // foreach (var n in node.Nodes)
-    // {
-    //     GetNodes(n, output);
-    // }
+ 
 
 
 

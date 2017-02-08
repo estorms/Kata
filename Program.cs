@@ -55,6 +55,7 @@ namespace Challenges
             var Ted = FamilyTreeGenerator.Make();
             var fam = Ted.GetBirthMonth(Ted, "Susan");
             Console.WriteLine("{0}", fam);
+            Console.WriteLine(challengesLib.VampireTest(1, 0));
             // foreach (var f in fam) {
         }
     }
