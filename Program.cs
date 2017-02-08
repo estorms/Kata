@@ -56,6 +56,8 @@ namespace Challenges
             var fam = Ted.GetBirthMonth(Ted, "Susan");
             Console.WriteLine("{0}", fam);
             Console.WriteLine(challengesLib.VampireTest(1, 0));
+            int [] nums = new int[]  {1,2,3,4,3,2,1};
+            Console.WriteLine(challengesLib.FindEvenIndex(nums));
             // foreach (var f in fam) {
         }
     }

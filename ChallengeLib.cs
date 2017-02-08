@@ -9,16 +9,38 @@ namespace Challenges
     public class ChallengesLib
     {
 
+        public int FindEvenIndex(int[] arr)
+        {
+            int sum = 0;
+            int leftSum = 0;
+            for (var i = 0; i < arr.Length; i++)
+            {
+                sum += arr[i];
+            }
+
+            for (var j = 0; j < arr.Length; j++)
+            {
+                sum -= arr[j];
+
+                if (leftSum == sum)
+                {
+                    return j;
+                }
+                leftSum += arr[j];
+
+            }
+
+
+            return -1;
+        }
         //String.Concat is working where ToString() is not
         public bool VampireTest(long x, long y)
         {
             var prod = String.Concat((x * y).ToString().OrderBy(c => c));
             var longs = String.Concat((String.Concat(x, y)).OrderBy(c => c));
             return longs == prod;
-            
+
         }
-        //REMEMBER TO USE VAR WHENEVER INSIDE METHOD, LET THE CODE DETERMINE TYPE FOR YOU, NEED TO KNOW WHY VAR IS POSSIBLE W/I FUNCTION SCOPE ONLY: 
-        //WHEN STARTING ITERATOR AT ZERO, NEED TO USE <, NOT <= OPERATOR: EVEN LENGTH OPERATES DIFFERENTLY IN C#, ALONG WITH COUNT
         public string[] GetPossibleWords(string jumble, string[] dictionary)
         {
             try
