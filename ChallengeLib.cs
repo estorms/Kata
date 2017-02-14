@@ -3,12 +3,30 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace Challenges
 {
     public class ChallengesLib
     {
+public void Fibonacci(int a, int b, int c)
+{
+    if (c == 0) return;
 
+    int current = a + b;
+
+    Console.WriteLine(current);
+
+    Fibonacci(a, current, c - 1);
+}
+        public int RecursiveFib (int num) {
+            if(num < 2) {
+                return 1;
+            }
+            else {
+                return RecursiveFib(num - 1) + RecursiveFib(num -2);
+            }
+        }
         public int FindEvenIndex(int[] arr)
         {
             int sum = 0;
@@ -269,7 +287,7 @@ namespace Challenges
                 return rejection;
             }
         }
-
+        
     }
 }
 
