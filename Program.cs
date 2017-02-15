@@ -24,6 +24,7 @@ namespace Challenges
             ChallengesLib challengesLib = new ChallengesLib();
             Console.WriteLine(challengesLib.RecursiveFib(7));
             challengesLib.Fibonacci(0, 1, 5);
+            Console.WriteLine(challengesLib.Compare("AD", "AB"));
             // Console.WriteLine(challengesLib.CheckDupes(" "));
             // Console.WriteLine(challengesLib.CheckDupes("abcde"));
             // Console.WriteLine(challengesLib.CheckDupes("aabbcde"));

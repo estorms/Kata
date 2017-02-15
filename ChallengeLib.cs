@@ -9,22 +9,54 @@ namespace Challenges
 {
     public class ChallengesLib
     {
-public void Fibonacci(int a, int b, int c)
-{
-    if (c == 0) return;
 
-    int current = a + b;
+        // Compare two strings by comparing the sum of their values (ASCII character code).
+        // For comparing treat all letters as UpperCase.
 
-    Console.WriteLine(current);
+        public bool Compare(string s1, string s2)
+        {
 
-    Fibonacci(a, current, c - 1);
-}
-        public int RecursiveFib (int num) {
-            if(num < 2) {
+            var str1 = s1.ToUpper().Sum(s => s);
+            var str2 = s2.ToUpper().Sum(s => s);
+            return str1 == str2;
+        }
+
+        // The numberOfOccurrences function must return the number of occurrences of an element in an array.
+        public int NumberOfOccurences(int x, int[] xs)
+        {
+            var counter = 0;
+            for (var i = 0; i < xs.Length; i++)
+            {
+                if (xs[i] == x)
+                {
+                    counter++;
+                }
+
+            }
+            return counter;
+        }
+        //     return xs.Count(num => num == x);
+
+        public void Fibonacci(int a, int b, int c)
+        {
+            if (c == 0) return;
+
+            int current = a + b;
+
+            Console.WriteLine(current);
+
+            Fibonacci(a, current, c - 1);
+        }
+        public int RecursiveFib(int num)
+        {
+            if (num < 2)
+            {
                 return 1;
             }
-            else {
-                return RecursiveFib(num - 1) + RecursiveFib(num -2);
+            else
+            {
+                return RecursiveFib(num - 1) + RecursiveFib(num - 2);
+                //THIS WORKS BECAUSE THE SECOND FUNCTION BEGINS RETURNING 1, WHICH THEN PASSES BACK UP THE CHAIN
             }
         }
         public int FindEvenIndex(int[] arr)
@@ -287,7 +319,7 @@ public void Fibonacci(int a, int b, int c)
                 return rejection;
             }
         }
-        
+
     }
 }
 
