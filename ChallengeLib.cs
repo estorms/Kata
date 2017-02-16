@@ -21,6 +21,45 @@ namespace Challenges
             return str1 == str2;
         }
 
+        // Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
+
+        public int Persistence(long number)
+        {
+            var numbers = new List<long>();
+            var product = 1;
+            for (; number > 0; number /= 10)
+                numbers.Add(number % 10);
+            for (var i = 0; i < numbers.Count; i++)
+            {
+                product *= Convert.ToInt32(numbers[i]);
+            }
+
+            if (product.ToString().Count() == 1) {
+                return 1;
+            }
+            else {
+                return 1 + Persistence(product);
+            }
+
+        }
+
+        public int FindShort(string s)
+        {
+            var smallest = s.Split(" ".ToCharArray()).ToList().Min(l => l.Count());
+            // int smallest = lst.Min(l => l.Count());
+            //    List<int> countList = new List<int>();
+            //    foreach(var c in arr) {
+            //        countList.Add(c.Count());
+            //    }
+            // return arr.Min(c =>c).Min();
+            return smallest;
+        }
+
+        public bool IsPalindrome(string str)
+        {
+            return str.SequenceEqual(str.Reverse());
+        }
+
         // The numberOfOccurrences function must return the number of occurrences of an element in an array.
         public int NumberOfOccurences(int x, int[] xs)
         {
