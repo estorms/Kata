@@ -9,10 +9,61 @@ namespace Challenges
 {
     public class ChallengesLib
     {
+    public int CountSmileys(string[] smileys) {
+        var counter = 0;
 
+        foreach(var item in smileys) {
+            if ((item.Length == 2) 
+            && (item.Contains(':') || item.Contains(';')) 
+            && (item.Contains(')') || item.Contains('D'))) {   
+                    // if (item.Length ==3 && (item.Contains('~') || item.Contains('-'))){
+                    //     counter ++;
+                    // }
+                    counter ++;
+            }
+            else if ((item.Length == 3) 
+            && (item.Contains(':') || item.Contains(';')) 
+            && (item.Contains(')') || item.Contains('D')) 
+            && (item.Contains('~') || item.Contains('-'))){
+                    //     counter ++;
+                    // }
+                    counter ++;
+            }
+        }
+        return counter;
+    }
+
+    
+
+  
+    public  int[] SortArray(int[] array)
+  {
+    List<int>odds = new List<int>();
+      for (var i =0; i < array.Length; i++) {
+          if(array[i] %2 != 0) {
+              
+            //   odds.Add(array[i]);
+              
+          }
+        
+      }
+          return odds.ToArray();
+  }
+
+//          public int[] DataReverse(int[] data)
+//   {
+        
+     
+     
+//   }
         // Compare two strings by comparing the sum of their values (ASCII character code).
         // For comparing treat all letters as UpperCase.
 
+public bool stringCheck (string str) {
+  
+  return str.Distinct().Count() == str.Length;
+
+}
         public bool Compare(string s1, string s2)
         {
 
@@ -21,42 +72,45 @@ namespace Challenges
             return str1 == str2;
         }
 
+        public int sumEvens(int[] nums) {
+            return nums.Where(s => s % 2 ==0).Aggregate((s, s1) => s * s);
+        }
         // Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
 
-        public int Persistence(long number)
+        public int Persistence(long n)
+
         {
-            var numbers = new List<long>();
-            var product = 1;
-            for (; number > 0; number /= 10)
-                numbers.Add(number % 10);
-            for (var i = 0; i < numbers.Count; i++)
+            if (n.ToString().Count() == 1)
             {
-                product *= Convert.ToInt32(numbers[i]);
+                return 0;
             }
+            else
+            {
+                var numbers = new List<long>();
+                for (; n > 0; n /= 10)
+                    numbers.Add(n % 10);
+                var product = Convert.ToInt32(numbers.Aggregate((a, b) => a * b));
+                if (product >= 0 && product <= 9)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 1 + Persistence(product);
+                }
 
-            if (product.ToString().Count() == 1) {
-                return 1;
             }
-            else {
-                return 1 + Persistence(product);
-            }
-
         }
 
         public int FindShort(string s)
         {
             var smallest = s.Split(" ".ToCharArray()).ToList().Min(l => l.Count());
-            // int smallest = lst.Min(l => l.Count());
-            //    List<int> countList = new List<int>();
-            //    foreach(var c in arr) {
-            //        countList.Add(c.Count());
-            //    }
-            // return arr.Min(c =>c).Min();
             return smallest;
         }
 
         public bool IsPalindrome(string str)
         {
+            str  = str.ToUpper().Replace(" ", String.Empty);
             return str.SequenceEqual(str.Reverse());
         }
 
