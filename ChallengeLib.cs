@@ -9,6 +9,20 @@ namespace Challenges
 {
     public class ChallengesLib
     {
+
+
+    public string declareWinner(Fighter fighter1, Fighter fighter2) {
+        var f1Health = fighter1.Health;
+        var f2Health = fighter2.Health;
+        var f1Damage = fighter1.DamagePerAttack;
+        var f2Damage = fighter2.DamagePerAttack;
+
+        while (f1Health >= 0 && f2Health >=0) {
+            f2Health = f2Health - f1Damage;
+            f1Health = f1Health - f2Damage;
+        }
+      return  f1Health >= f2Health ? $"{fighter1.Name}" : $"{fighter2.Name}";
+    }
     public int CountSmileys(string[] smileys) {
         var counter = 0;
 
